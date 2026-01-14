@@ -5,9 +5,9 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 
-RUN mvn dependency:go-offline -B
+RUN ./mvnw dependency:go-offline -B
 
-RUN mvn clean package -DskipTests
+RUN ./mvnw clean package -DskipTests
 
 FROM amazoncorretto:21.0.9-alpine3.20
 ARG JAR_FILE=target/*.jar
