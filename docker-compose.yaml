@@ -1,0 +1,26 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: cfx-frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+    deploy:
+      resources:
+        limits:
+          memory: 256 MB
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: cfx-backend
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 256 MB
